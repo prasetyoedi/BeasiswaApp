@@ -48,6 +48,12 @@
 
     <div class="container mt-4">
         <h1 class="mb-4">Hasil Pendaftaran</h1>
+        <!-- Menampilkan pesan sukses -->
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <table class="table table-bordered table-striped table-responsive-sm">
             <thead>
                 <tr>

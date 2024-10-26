@@ -27,7 +27,10 @@
                         </div>
                         <div class="col-md-9">
                             <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}"
-                                required>
+                                required placeholder="Nama Lengkap">
+                            @error('name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -39,7 +42,11 @@
                             <label for="email">Email</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+                            <input type="email" name="email" class="form-control" value="{{ old('email') }}" required
+                                placeholder="email@example.com">
+                            @error('email')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -51,7 +58,8 @@
                             <label for="phone">Nomor HP</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" required>
+                            <input type="text" name="phone" class="form-control" value="{{ old('phone') }}" required
+                                placeholder="089876543212">
                         </div>
                     </div>
                 </div>
@@ -91,9 +99,10 @@
                             <label for="beasiswa_type">Jenis Beasiswa</label>
                         </div>
                         <div class="col-md-9">
-                            <select name="beasiswa_type" class="form-select" {{ $ipk < 3 ? 'disabled' : '' }} required>
+                            <select name="beasiswa_type" class="form-select" required>
                                 @foreach($beasiswaOptions as $key => $value)
-                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    <option value="{{ $key }}" {{ $key == $selectedBeasiswa ? 'selected' : '' }}>{{ $value }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>

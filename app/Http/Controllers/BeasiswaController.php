@@ -15,8 +15,8 @@ class BeasiswaController extends Controller
     {
         $ipk = self::IPK; // Mengambil nilai IPK untuk dikirim ke view
         $beasiswaOptions = [
-            'Akademik' => 'Beasiswa Akademik',
-            'Non-Akademik' => 'Beasiswa Non-Akademik'
+            'Akademik' => 'IPK diatas 3,5 dan melampirkan transkrip nilai',
+            'Non-Akademik' => 'IPK diatas 3 dan melampirkan bukti prestasi'
         ]; // Pilihan beasiswa
 
         return view('beasiswa.index', compact('ipk', 'beasiswaOptions'));
@@ -57,6 +57,21 @@ class BeasiswaController extends Controller
         // Redirect ke halaman hasil pendaftaran dengan ID beasiswa
         return redirect()->route('beasiswa.hasil', $beasiswa->id);
     }
+
+    // app/Http/Controllers/BeasiswaController.php
+
+    public function create()
+    {
+        // Asumsi IPK tetap untuk contoh
+        $ipk = self::IPK;
+        $beasiswaOptions = [
+            'Akademik' => 'Beasiswa Akademik',
+            'Non-Akademik' => 'Beasiswa Non-Akademik',
+        ];
+
+        return view('beasiswa.daftar', compact('ipk', 'beasiswaOptions'));
+    }
+
 
     // Fungsi untuk menampilkan hasil pendaftaran beasiswa
     public function hasil($id)
